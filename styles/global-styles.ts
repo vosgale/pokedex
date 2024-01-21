@@ -10,6 +10,10 @@ export default createGlobalStyle`
 }
 body{
   font-family: 'Roboto';
-  border: thin solid red;
+  #root{
+
+    display:flex;
+    position: relative;
+  } 
 }
 `;

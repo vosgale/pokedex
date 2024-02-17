@@ -7,8 +7,17 @@ import {
   PokemonListHeader,
   SearchInputContainer,
 } from "./styles";
+import { useEffect } from "react";
+import { usePokemonListController } from "./usePokemonListController";
 
 export const PokemonList = () => {
+  const { getPokemonList, pokemonList, getPokemonImage } =
+    usePokemonListController();
+
+  useEffect(() => {
+    getPokemonList();
+  }, []);
+
   return (
     <PokemonListContainer>
       <PokemonListHeader></PokemonListHeader>
@@ -17,15 +26,12 @@ export const PokemonList = () => {
         <SearchInputContainer />
       </FiltersContainer>
       <PokemonListGrid>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
-        <PokemonCard></PokemonCard>
+        {pokemonList.map((pokemon) => (
+          <PokemonCard>
+            <p>{pokemon.name}</p>
+            <img src={getPokemonImage(pokemon.id) || ""} />
+          </PokemonCard>
+        ))}
       </PokemonListGrid>
     </PokemonListContainer>
   );

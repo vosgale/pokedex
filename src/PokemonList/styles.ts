@@ -19,7 +19,7 @@ export const PokemonListHeader = styled.div`
   height: 140px;
   background-image: ${`url(${IMAGES.pokedexHeader})`};
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 `;
 
 export const FiltersContainer = styled.div`
@@ -54,4 +54,9 @@ export const PokemonListGrid = styled.div`
 export const PokemonCard = styled.div`
   border: thin solid red;
   height: 300px;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    width: 100px;
+  }
 `;
